@@ -32,8 +32,12 @@ class HomeController
 
         $id_contact = $request->params->id;
         $homeModel = new HomeModel();
-        $img =$homeModel->getContactImg($id_contact)[0]['coct_url_img_profile'];
-        if (unlink('assets/img/'.$img) && $homeModel->deleteContact($id_contact)){
+        $img = $homeModel->getContactImg($id_contact)[0]['coct_url_img_profile'];
+
+        if ($homeModel->deleteContact($id_contact)){
+            if(!empty($img)){
+                unlink('assets/img/'.$img);
+            }
             $response->status(200)->send(['data' => 'The contact was deleted successfully']);
         }
         $response->status(400)->send(['Error deleting the contact']);
