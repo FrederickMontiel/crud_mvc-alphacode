@@ -1,0 +1,21 @@
+{
+    "name": "srsin/mvc_crud",
+    "authors": [
+        {
+            "name": "Alfredo",
+            "email": "codeatuidea@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helpers/function_helpers.php"
+        ]
+    },
+    "require": {
+        "easy-projects/simple-router": "^7.3",
+      "ext-pdo": "*"
+    }
+}
