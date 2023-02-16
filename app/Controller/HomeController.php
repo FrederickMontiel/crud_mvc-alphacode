@@ -8,18 +8,19 @@ use EasyProjects\SimpleRouter\Response as Response;
 
 class HomeController
 {
-    public function index(){
+    public static function index(){
 
         $contacts = new HomeModel();
         $data['contacts'] = $contacts->getAllContacts();
+        
         view('home',$data);
     }
 
-    public function create(){
+    public static function create(){
         view('create');
     }
 
-    public function store(Request $request, Response $response){
+    public static function store(Request $request, Response $response){
 
         $client = (array)$request->body;
         $url_img_profile = saveFile((array)$request->files->file,'assets/img/',["jpg", "jpeg", "png", "gif", "PNG", "JPG", "JPEG"]);
@@ -28,7 +29,7 @@ class HomeController
                                                                 : $response->status(400)->send(['data' => 'Error inserting data']);
     }
 
-    public function destroy(Request $request, Response $response){
+    public static function destroy(Request $request, Response $response){
 
         $id_contact = $request->params->id;
         $homeModel = new HomeModel();
@@ -43,7 +44,7 @@ class HomeController
         $response->status(400)->send(['Error deleting the contact']);
     }
 
-    public function edit(Request $request){
+    public static function edit(Request $request){
 
         $data['id_contact'] = $request->params->id;
 
@@ -52,7 +53,7 @@ class HomeController
         view('edit',$data);
     }
 
-    public function update(Request $request, Response $response){
+    public static function update(Request $request, Response $response){
 
         $id_client = $request->params->id;
         $contact = (array)$request->body;

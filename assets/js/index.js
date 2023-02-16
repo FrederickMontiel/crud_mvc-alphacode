@@ -43,6 +43,7 @@
                 }).then(res =>{
                     alert(res.data)
                     e.path[3].remove()
+                    window.location.reload()
                 }).catch(e => {
                     e.json().then(({data}) => {
                         alert(data)
