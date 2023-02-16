@@ -7,8 +7,6 @@ application/cache/*
 application/logs/*
 !application/logs/index.html
 
-!application/*/.htaccess
-.htaccess
 error_log
 
 composer.lock
@@ -24,7 +22,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/config/config.php
 application/config/database.php
 .user.ini
-.htaccess
 error_log
 
 # IDE Files
